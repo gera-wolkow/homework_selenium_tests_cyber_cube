@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "allTests">
-    <test name = "testing of page interface">
+<suite name = "allTests" verbose="1" parallel="tests" thread-count="1" configfailurepolicy="continue">
+    <test name = "testing of page interface" annotations="JDK" preserve-order="true">
         <classes>
-            <class name = "selenideTests.pageViewTests"/>
+            <class name = "Main"/>
         </classes>
     </test>
 </suite>
