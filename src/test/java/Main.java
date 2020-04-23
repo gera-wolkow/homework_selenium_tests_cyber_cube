@@ -15,13 +15,7 @@ import static com.codeborne.selenide.Selenide.open;
 @CucumberOptions(
         features = "src/test/resources/feature",
         glue = {"stepdefs"},
-        tags = {"~@Ignore"},
-        format = {
-                "pretty",
-                "html:target/cucumber-reports/cucumber-pretty",
-                "json:target/cucumber-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun.txt"
-        }
+        tags = {"~@Ignore"}
         )
 
 public class Main {

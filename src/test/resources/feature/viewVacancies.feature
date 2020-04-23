@@ -5,6 +5,13 @@ Feature: View Vacancies List
 
   Background: Visitor navigates to vacancies list page
     Given Visitor is on the "Job Vacancies | CyberCube" page on URL "https://www.cybcube.com/careers/vacancies/"
+    
+    Scenario: 
+      Then Visitor should see Logo
+      
+    Scenario: 
+      When Visitor clicks on Logo
+      Then Visitor navigates to URL "https://www.cybcube.com/"
 
     Scenario Outline:
       Then Visitor should see "<menuList>" buttons
@@ -16,7 +23,24 @@ Feature: View Vacancies List
       Then Visitor should see "Request More Information" navigate button
 
     Scenario:
+      When Visitor clicks on "Request More Information" navigate button
+      Then Visitor navigates to URL "https://www.cybcube.com/contact/"
+
+    Scenario:
       Then Visitor should see Search button
+
+    Scenario:
+      When Visitor clicks on Search button
+      Then Search form appears
+
+    Scenario:
+      Then Visitor should see Trends Flag
+      And Visitor should see Trends Title with "Understanding Ransomware Trends" text
+      And Visitor should see Trends Download Button with "Download Report" text
+      
+    Scenario: 
+      When Visitor clicks on Trends Download Button
+      Then Visitor navigates to URL "https://insights.cybcube.com/en/understanding-ransomware-trends" in new tab
 
     Scenario:
       Then Visitor should see "Job Vacancies" text topic
@@ -27,13 +51,3 @@ Feature: View Vacancies List
       |listOfSections|
       |Analytics, Client Services, Sales & Business Development, Engineering, Operations, Executive Leadership|
 
-    Scenario Outline:
-      Then Every element in "<section>" should have "<attribute>" team attribute
-      Examples:
-      |section|attribute|
-      |Analytics|Analytics|
-      |Client Services|Client Services|
-      |Sales & Business Development|Sales & Business Development|
-      |Engineering|Engineering|
-      |Operations|Operations|
-      |Executive Leadership|Executive Leadership|

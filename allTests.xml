@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "allTests" verbose="1" parallel="tests" thread-count="1" configfailurepolicy="continue">
-    <test name = "testing of page interface" annotations="JDK" preserve-order="true">
+<suite name = "allTests" verbose="1" parallel="tests" thread-count="1" >
+    <test name = "testing of page interface" annotations="JDK">
         <classes>
             <class name = "Main"/>
         </classes>
