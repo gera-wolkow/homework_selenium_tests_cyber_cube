@@ -132,7 +132,7 @@ public class stepDefinitions extends vacanciesPageHooks{
         Assert.assertTrue(filterLocationTitle.isDisplayed());
         Assert.assertEquals(filterLocationTitle.text(), location);
         Assert.assertTrue(filterTeamTitle.isDisplayed());
-        Assert.assertEquals(filterTeamTitle.text(), location);
+        Assert.assertEquals(filterTeamTitle.text(), team);
     }
 
     @Then("^Visitor should see Location drop-down and Team drop-down$")

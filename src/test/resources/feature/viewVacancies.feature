@@ -59,7 +59,6 @@ Feature: View Vacancies List
       |San Francisco, CA|
       |London|
       |New York, NY|
-      |United States|
       |Tallinn|
 
     Scenario Outline:
