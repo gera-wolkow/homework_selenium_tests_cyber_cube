@@ -23,14 +23,18 @@ public class vacanciesPageHooks {
     public static SelenideElement trendsFlagTitle = trendsFlag.$("div[class=ticker-text]");
     public static SelenideElement trendsFlagDownloadButton = trendsFlag.$("a[href]");
     public static SelenideElement pageHeader = $("section[class=page-header]");
+    public static SelenideElement filter = $("div[class=rf-lever-filters]");
+    public static SelenideElement filterLocationTitle = filter.$("label[for=filter-location]");
+    public static SelenideElement filterLocationInput = filter.$("select[id=filter-location]");
+    public static SelenideElement filterTeamTitle = filter.$("label[for=filter-team]");
+    public static SelenideElement filterTeamInput = filter.$("select[id=filter-team]");
+    public static SelenideElement emptyWarning = $("div[class=rf-lever-empty]");
     public static SelenideElement pageBody = $("div[class=rf-lever-items-wrapper]");
     public static ElementsCollection sectionsList = pageBody.$$("h3");
     public static ElementsCollection getAllVacanciesList = pageBody.$$("li[class=lever-job]");
 
-    public static ElementsCollection getVacanciesList (String section) {
-        return pageBody.$$("h3:contains(" + section + ") ~+ li").filter(Condition.cssClass("lever-job"));
-
-        //h3[text()="Client Services"]/li[following::h3]
+    public static SelenideElement getVacancyLocation (SelenideElement vacancy) {
+        return vacancy.$("span[class^=lever-job-location]");
     }
 
     public static SelenideElement getVacancyTeam (SelenideElement vacancy) {

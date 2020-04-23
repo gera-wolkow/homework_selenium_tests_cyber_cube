@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import test.tmp.AssertEqualsTest;
 
 import java.util.List;
 
@@ -126,4 +127,56 @@ public class stepDefinitions extends vacanciesPageHooks{
         closeWindow();
     }
 
+    @Then("^Visitor should see \"([^\"]*)\" filter title and \"([^\"]*)\" filter title$")
+    public void visitorShouldSeeFilterTitleAndFilterTitle(String location, String team) {
+        Assert.assertTrue(filterLocationTitle.isDisplayed());
+        Assert.assertEquals(filterLocationTitle.text(), location);
+        Assert.assertTrue(filterTeamTitle.isDisplayed());
+        Assert.assertEquals(filterTeamTitle.text(), location);
+    }
+
+    @Then("^Visitor should see Location drop-down and Team drop-down$")
+    public void visitorShouldSeeLocationDropDownAndTeamDropDown() {
+        Assert.assertTrue(filterLocationInput.isDisplayed());
+        Assert.assertTrue(filterTeamInput.isDisplayed());
+    }
+
+    @When("^Visitor select \"([^\"]*)\" in Location drop-down$")
+    public void visitorSelectInLocationDropDown(String option) {
+        filterLocationInput.selectOption(option);
+    }
+
+    @Then("^Visitor should see vacancies list with \"([^\"]*)\" locations or text \"([^\"]*)\"$")
+    public void visitorShouldSeeVacanciesListWithLocations(String option, String warning) {
+        ElementsCollection list = getAllVacanciesList;
+        if (list.size() > 0) {
+            int i = 0;
+            while (i < list.size()) {
+                Assert.assertEquals(getVacancyLocation(list.get(i)).text(), option);
+                i++;
+            }
+        } else {
+            Assert.assertEquals(emptyWarning.text(), warning);
+        }
+    }
+
+    @When("^Visitor select \"([^\"]*)\" in Team drop-down$")
+    public void visitorSelectInTeamDropDown(String option)  {
+        filterTeamInput.selectOption(option);
+    }
+
+
+    @Then("^Visitor should see vacancies list with \"([^\"]*)\" teams or text \"([^\"]*)\"$")
+    public void visitorShouldSeeVacanciesListWithTeamsOrText(String option, String warning) {
+        ElementsCollection list = getAllVacanciesList;
+        if (list.size() > 0) {
+            int i = 0;
+            while (i < list.size()) {
+                Assert.assertEquals(getVacancyTeam(list.get(i)).text(), option);
+                i++;
+            }
+        } else {
+            Assert.assertEquals(emptyWarning.text(), warning);
+        }
+    }
 }

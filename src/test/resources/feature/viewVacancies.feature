@@ -45,6 +45,35 @@ Feature: View Vacancies List
     Scenario:
       Then Visitor should see "Job Vacancies" text topic
 
+    Scenario:
+      Then Visitor should see "Location" filter title and "Team" filter title
+
+    Scenario:
+      Then Visitor should see Location drop-down and Team drop-down
+
+    Scenario Outline:
+      When Visitor select "<option>" in Location drop-down
+      Then Visitor should see vacancies list with "<option>" locations or text "There are no jobs matching this criteria, please try resetting the filters above."
+      Examples:
+      |option|
+      |San Francisco, CA|
+      |London|
+      |New York, NY|
+      |United States|
+      |Tallinn|
+
+    Scenario Outline:
+      When Visitor select "<option>" in Team drop-down
+      Then Visitor should see vacancies list with "<option>" teams or text "There are no jobs matching this criteria, please try resetting the filters above."
+      Examples:
+      |option|
+      |Analytics|
+      |Client Services|
+      |Sales & Business Development|
+      |Engineering|
+      |Operations|
+      |Executive Leadership|
+
     Scenario Outline:
       Then Visitor should see "<listOfSections>" section
       Examples:
