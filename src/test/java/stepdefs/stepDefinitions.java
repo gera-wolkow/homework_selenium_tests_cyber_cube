@@ -1,5 +1,6 @@
 package stepdefs;
 import com.codeborne.selenide.ElementsCollection;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -181,11 +182,28 @@ public class stepDefinitions extends vacanciesPageHooks{
     @Then("^Every vacancy should have \"([^\"]*)\" team corresponding to section$")
     public void everyVacancyShouldHaveTeamCorrespondingToSection(String option) {
         ElementsCollection list = getVacancyBySection(option);
-        System.out.println(list.size());
         int i = 0;
         while (i < list.size()) {
             Assert.assertEquals(getVacancyTeam(list.get(i)).text(), option);
             i++;
         }
+    }
+
+    @Then("^Visitor should see footer with title \"([^\"]*)\"$")
+    public void visitorShouldSeeFooterWithTitle(String title) {
+        Assert.assertTrue(footerTitle.isDisplayed());
+        Assert.assertEquals(footerTitle.getText(), title);
+    }
+
+    @Then("^Visitor should see \"([^\"]*)\" footer button$")
+    public void visitorShouldSeeFooterButton(String text){
+        Assert.assertTrue(footerButton.isDisplayed());
+        Assert.assertEquals(footerButton.text(), text);
+    }
+
+    @When("^Visitor clicks on \"Contact a CyberCube expert\" footer button$")
+    public void visitorClicksOnFooterButton() {
+        Assert.assertTrue(footerButton.isDisplayed());
+        footerButton.click();
     }
 }

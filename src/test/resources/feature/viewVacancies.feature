@@ -89,3 +89,13 @@ Feature: View Vacancies List
       |Engineering|
       |Operations|
       |Executive Leadership|
+
+    Scenario:
+      Then Visitor should see footer with title "Discover how to leverage leading cyber risk analytics for your business"
+
+    Scenario:
+      Then Visitor should see "Contact a CyberCube expert" footer button
+
+    Scenario:
+      When Visitor clicks on "Contact a CyberCube expert" footer button
+      Then Visitor navigates to URL "https://www.cybcube.com/contact/"

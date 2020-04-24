@@ -33,6 +33,9 @@ public class vacanciesPageHooks {
     public static SelenideElement pageBody = $("div[class=rf-lever-items-wrapper]");
     public static ElementsCollection sectionsList = pageBody.$$("h3");
     public static ElementsCollection getAllVacanciesList = pageBody.$$("li[class=lever-job]");
+    public static SelenideElement footer = $("div[class=footer-cta]");
+    public static SelenideElement footerTitle = footer.$("h3");
+    public static SelenideElement footerButton = footer.$("a[class=button-green]");
 
     public static SelenideElement getSubMenuByButton (String buttonName) {
         return menuButtonsList.findBy(Condition.text(buttonName)).$("ul[class=sub-menu]");
