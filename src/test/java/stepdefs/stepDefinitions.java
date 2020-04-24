@@ -1,4 +1,5 @@
 package stepdefs;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -205,5 +206,15 @@ public class stepDefinitions extends vacanciesPageHooks{
     public void visitorClicksOnFooterButton() {
         Assert.assertTrue(footerButton.isDisplayed());
         footerButton.click();
+    }
+
+    @When("^Visitor hovers \"([^\"]*)\" buttons$")
+    public void visitorHoversButtons(String buttonName) {
+        menuButtonsList.findBy(Condition.text(buttonName)).hover();
+    }
+
+    @Then("^Sub-menu \"([^\"]*)\" appears$")
+    public void subMenuAppears(String buttonName) {
+        Assert.assertTrue(getSubMenuByButton(buttonName).isDisplayed());
     }
 }

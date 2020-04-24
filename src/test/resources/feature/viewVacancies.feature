@@ -19,6 +19,15 @@ Feature: View Vacancies List
       |menuList|
       |Products & Solutions, About, Resources|
 
+    Scenario Outline:
+      When Visitor hovers "<menuList>" buttons
+      Then Sub-menu "<menuList>" appears
+      Examples:
+      |menuList|
+      |Products & Solutions|
+      |About|
+      |Resources|
+
     Scenario:
       Then Visitor should see "Request More Information" navigate button
 
