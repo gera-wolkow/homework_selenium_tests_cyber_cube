@@ -1,12 +1,10 @@
 package stepdefs;
 import com.codeborne.selenide.ElementsCollection;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import test.tmp.AssertEqualsTest;
 
 import java.util.List;
 
@@ -177,6 +175,17 @@ public class stepDefinitions extends vacanciesPageHooks{
             }
         } else {
             Assert.assertEquals(emptyWarning.text(), warning);
+        }
+    }
+
+    @Then("^Every vacancy should have \"([^\"]*)\" team corresponding to section$")
+    public void everyVacancyShouldHaveTeamCorrespondingToSection(String option) {
+        ElementsCollection list = getVacancyBySection(option);
+        System.out.println(list.size());
+        int i = 0;
+        while (i < list.size()) {
+            Assert.assertEquals(getVacancyTeam(list.get(i)).text(), option);
+            i++;
         }
     }
 }

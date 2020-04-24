@@ -79,3 +79,13 @@ Feature: View Vacancies List
       |listOfSections|
       |Analytics, Client Services, Sales & Business Development, Engineering, Operations, Executive Leadership|
 
+    Scenario Outline:
+      Then Every vacancy should have "<option>" team corresponding to section
+      Examples:
+      |option|
+      |Analytics|
+      |Client Services|
+      |Sales & Business Development|
+      |Engineering|
+      |Operations|
+      |Executive Leadership|

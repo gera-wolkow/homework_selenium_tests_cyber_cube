@@ -4,8 +4,9 @@ package stepdefs;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
 
 /**
  * Created by iuriiryndin on 21.04.2020
@@ -32,6 +33,14 @@ public class vacanciesPageHooks {
     public static SelenideElement pageBody = $("div[class=rf-lever-items-wrapper]");
     public static ElementsCollection sectionsList = pageBody.$$("h3");
     public static ElementsCollection getAllVacanciesList = pageBody.$$("li[class=lever-job]");
+
+    public static SelenideElement getSubMenuByButton (String buttonName) {
+        return menuButtonsList.findBy(Condition.text(buttonName)).$("ul[class=sub-menu]");
+    }
+
+    public static ElementsCollection getVacancyBySection (String section) {
+        return sectionsList.findBy(Condition.text(section)).$x("following-sibling::ul").$$("li[class=lever-job]");
+    }
 
     public static SelenideElement getVacancyLocation (SelenideElement vacancy) {
         return vacancy.$("span[class^=lever-job-location]");
